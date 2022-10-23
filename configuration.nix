@@ -6,6 +6,9 @@
     "${modulesPath}/installer/cd-dvd/channel.nix"
   ];
 
+  time.timeZone = "America/Los_Angeles";
+  i18n.defaultLocale = "en_US.UTF-8";
+
   documentation.dev.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -19,10 +22,17 @@
     less
     man
     nix
+    vim
     which
   ];
 
   programs.zsh.enable = true;
+  virtualisation.docker.enable = true;
+
+  users.users.vscode = {
+    isNormalUser = true;
+    extraGroups = [ "docker" ];
+  };
 
   system.stateVersion = "22.05";
 }
