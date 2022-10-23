@@ -4,20 +4,20 @@
 {
   inherit pkgs;
  
-  system = pkgs.nixos ({ pkgs, modulesPath, ... }: {
+  system = pkgs.nixos {
     imports = [
-      "${modulesPath}/virtualisation/docker-image.nix"
-      "${modulesPath}/installer/cd-dvd/channel.nix"
+      ./configuration.nix
     ];
 
-    documentation.doc.enable = false;
+    installer.cloneConfig = false;
 
-    environment.systemPackages = with pkgs; [
-      bashInteractive
-      cacert
-      nix
-    ];
-
-    system.stateVersion = "22.05";
-  });
+    boot.postBootCommands = 
+      let
+        configFile = pkgs.writeText "configuration.nix" (builtins.readFile ./configuration.nix);
+      in ''
+        if [ ! -e /etc/nixos/configuration.nix ]; then
+          cp ${configFile} /etc/nixos/configuration.nix
+        fi
+      '';
+  };
 }
