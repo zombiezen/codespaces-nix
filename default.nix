@@ -3,7 +3,9 @@
 }:
 
 let
-  linux_x86_64 = pkgs: pkgs.pkgsCross.gnu64;
+  linux_x86_64 = pkgs: if pkgs.targetPlatform.isLinux && pkgs.targetPlatform.isx86_64
+    then pkgs
+    else pkgs.pkgsCross.gnu64;
 
   system = (linux_x86_64 pkgs_22_05).nixos ({ pkgs, ... }: {
     imports = [
@@ -31,7 +33,7 @@ let
       config = {
         Entrypoint = "/init";
         Labels = {
-          "org.opencontainers.image.source" = "https://github.com/zombizen/codespaces-nixos";
+          "org.opencontainers.image.source" = "https://github.com/zombiezen/codespaces-nixos";
           "org.opencontainers.image.version" = "22.05";
         };
       };
