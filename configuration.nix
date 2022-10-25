@@ -31,7 +31,12 @@
 
   users.users.vscode = {
     isNormalUser = true;
+    uid = 1000;
+    group = "vscode";
     extraGroups = [ "docker" ];
+  };
+  users.groups.vscode = {
+    gid = 1000;
   };
 
   system.stateVersion = "22.05";
