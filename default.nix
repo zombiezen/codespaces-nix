@@ -31,10 +31,16 @@ let
       copyToRoot = system.toplevel;
 
       config = {
-        Entrypoint = "/init";
+        Entrypoint = ["/init"];
         Labels = {
           "org.opencontainers.image.source" = "https://github.com/zombiezen/codespaces-nixos";
           "org.opencontainers.image.version" = "22.05";
+          "devcontainer.metadata" = builtins.toJSON {
+            overrideCommand = false;
+            runArgs = [ "--cap-add=SYS_ADMIN" "--security-opt=seccomp=unconfined" ];
+            remoteUser = "vscode";
+            updateRemoteUserUID = false;
+          };
         };
       };
     };
