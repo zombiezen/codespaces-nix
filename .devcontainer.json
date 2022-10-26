@@ -1,5 +1,5 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.0/containers/debian
 {
-	"image": "ghcr.io/zombiezen/codespaces-nixos:22.05"
+	"image": "ghcr.io/zombiezen/codespaces-nix"
 }
