@@ -25,10 +25,26 @@
 }:
 
 let
-  wrapperDir = "/sbin";
-  securityWrapper = callPackage ./security-wrapper {
-    parentWrapperDir = "/";
-  };
+  systemPackages = [
+    bashInteractive
+    coreutils-full
+    curl
+    findutils
+    gnugrep
+    gnutar
+    gzip
+    less
+    man
+    nix
+    sudo
+    tzdata
+    wget
+    wheelNopasswd
+    which
+    vim
+    zsh
+  ];
+
 
   wheelNopasswd = writeTextDir "etc/sudoers.d/wheel" ''
     %wheel ALL=(ALL:ALL) NOPASSWD: ALL
@@ -66,26 +82,9 @@ dockerTools.streamLayeredImage {
   copyToRoot = buildEnv {
     name = "codespaces-nix";
     paths = [
-      bashInteractive
-      coreutils-full
-      curl
       dockerTools.usrBinEnv
       dockerTools.binSh
       dockerTools.caCertificates
-      findutils
-      gnugrep
-      gnutar
-      gzip
-      less
-      man
-      nix
-      sudo
-      tzdata
-      wget
-      wheelNopasswd
-      which
-      vim
-      zsh
     ];
     pathsToLink = [
       "/bin"
