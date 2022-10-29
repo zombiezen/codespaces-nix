@@ -1,4 +1,5 @@
-FROM mcr.microsoft.com/vscode/devcontainers/base:0.202-debian-11
+# https://github.com/devcontainers/images/tree/main/src/base-debian/history
+FROM mcr.microsoft.com/vscode/devcontainers/base:0.202.8-debian-11
 
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
@@ -12,6 +13,7 @@ COPY nix.sh /tmp/nix.sh
 RUN install --mode 644 /tmp/nix.sh /etc/profile.d/nix.sh && rm /tmp/nix.sh
 
 VOLUME ["/tmp", "/run"]
+LABEL org.opencontainers.image.source="https://github.com/zombiezen/codespaces-nix"
 LABEL devcontainer.metadata="{ \
   \"remoteUser\": \"vscode\", \
   \"mounts\": [ \
