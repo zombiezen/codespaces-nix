@@ -5,6 +5,8 @@
 	"image": "mcr.microsoft.com/vscode/devcontainers/base:debian-11",
 	"remoteUser": "vscode",
 	"features": {
-		"docker-from-docker": "latest"
+		"ghcr.io/devcontainers/features/docker-from-docker:1": {
+			"version": "latest"
+		}
 	}
 }
