@@ -2,7 +2,7 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.0/containers/debian
 {
 	"name": "Debian",
-	"image": "mcr.microsoft.com/vscode/devcontainers/base:debian-11",
+	"image": "ghcr.io/zombiezen/codespaces-nix:0.1.0-alpha1",
 	"remoteUser": "vscode",
 	"features": {
 		"ghcr.io/devcontainers/features/docker-from-docker:1": {
