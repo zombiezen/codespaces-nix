@@ -15,7 +15,7 @@ Add the following `.devcontainer.json` file to your project:
 
 ```json
 {
-	"image": "ghcr.io/zombiezen/codespaces-nix",
+  "image": "ghcr.io/zombiezen/codespaces-nix",
 }
 ```
 
