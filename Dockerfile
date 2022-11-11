@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: Unlicense
+
 # https://github.com/devcontainers/images/tree/main/src/base-debian/history
 FROM mcr.microsoft.com/vscode/devcontainers/base:0.202.8-debian-11
 
