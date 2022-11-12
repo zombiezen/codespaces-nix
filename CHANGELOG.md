@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning][].
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
 [Unreleased]: https://github.com/zombiezen/codespaces-nix/compare/v0.1.0...HEAD
 
-## [0.1.0] - 2022-11-12
+## [0.1.0][] - 2022-11-12
 
 Initial public release.
 
