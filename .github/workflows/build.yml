@@ -7,6 +7,9 @@ on:
       - '**'
       - '!.github/**'
       - '!.gitignore'
+      - '!LICENSE'
+      - '!README.md'
+      - '!CHANGELOG.md'
       - '.github/workflows/build.yml'
   release:
     types: [published]
