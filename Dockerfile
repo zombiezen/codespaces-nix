@@ -47,14 +47,11 @@ RUN su - vscode -c 'nix-env --file /tmp/userspace.nix --install --attr defaultPa
   && rm /tmp/userspace.nix
 
 # Customize environment variables.
-COPY profile.d/00-user.sh profile.d/nix.sh /tmp/
-RUN install --mode 644 \
-    /tmp/nix.sh \
-    /tmp/00-user.sh \
-    /etc/profile.d/ && \
+COPY profile.d /tmp/profile.d
+RUN install --mode 644 /tmp/profile.d/* /etc/profile.d/ && \
+  rm -rf /tmp/profile.d && \
   echo 'source /etc/profile.d/00-user.sh' >> /etc/zsh/zshenv && \
-  echo 'source /etc/profile.d/nix.sh' >> /etc/zsh/zprofile && \
-  rm /tmp/00-user.sh /tmp/nix.sh
+  echo 'source /etc/profile.d/nix.sh' >> /etc/zsh/zprofile
 
 # Set up tmpfs volumes.
 VOLUME ["/tmp", "/run"]
