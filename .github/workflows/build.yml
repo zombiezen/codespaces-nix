@@ -26,6 +26,8 @@ jobs:
           outputs: type=docker,dest=/tmp/codespaces-nix.tar
           build-args: |
             REVISION=${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
       - name: Upload image
         uses: actions/upload-artifact@v3
         with:
