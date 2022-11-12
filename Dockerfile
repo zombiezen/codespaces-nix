@@ -1,7 +1,6 @@
 # SPDX-License-Identifier: Unlicense
 
-ARG DEBIAN=debian:bullseye-20221024-slim
-
+ARG DEBIAN="docker.io/library/debian:bullseye-20221024-slim"
 FROM $DEBIAN
 
 # As of 2022-11-12, VSCode requires
@@ -56,10 +55,11 @@ RUN install --mode 644 /tmp/profile.d/* /etc/profile.d/ && \
 # Set up tmpfs volumes.
 VOLUME ["/tmp", "/run"]
 
+ARG DEBIAN
 ARG REVISION
 LABEL org.opencontainers.image.source="https://github.com/zombiezen/codespaces-nix"
-LABEL org.opencontainers.image.revision=$REVISION
-LABEL org.opencontainers.image.base.name=$DEBIAN
+LABEL org.opencontainers.image.base.name="$DEBIAN"
+LABEL org.opencontainers.image.revision="$REVISION"
 LABEL devcontainer.metadata="{ \
   \"remoteUser\": \"vscode\", \
   \"mounts\": [ \
