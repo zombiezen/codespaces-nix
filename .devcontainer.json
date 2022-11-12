@@ -1,9 +1,6 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.245.0/containers/debian
+// For format details, see https://aka.ms/devcontainer.json.
 {
-	"name": "Debian",
-	"image": "ghcr.io/zombiezen/codespaces-nix:0.1.0-alpha1",
-	"remoteUser": "vscode",
+	"image": "ghcr.io/zombiezen/codespaces-nix:0.1.0",
 	"features": {
 		"ghcr.io/devcontainers/features/docker-from-docker:1": {
 			"version": "latest"
