@@ -47,7 +47,7 @@ RUN su - vscode -c 'nix-env --file /tmp/userspace.nix --install --attr defaultPa
   && rm /tmp/userspace.nix
 
 # Customize environment variables.
-COPY 00-user.sh nix.sh /tmp/
+COPY profile.d/00-user.sh profile.d/nix.sh /tmp/
 RUN install --mode 644 \
     /tmp/nix.sh \
     /tmp/00-user.sh \
