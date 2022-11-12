@@ -62,9 +62,5 @@ LABEL org.opencontainers.image.documentation="https://github.com/zombiezen/codes
 LABEL org.opencontainers.image.base.name="$DEBIAN"
 LABEL org.opencontainers.image.revision="$REVISION"
 LABEL devcontainer.metadata="{ \
-  \"remoteUser\": \"vscode\", \
-  \"mounts\": [ \
-    {\"type\": \"tmpfs\", \"target\": \"/tmp\"}, \
-    {\"type\": \"tmpfs\", \"target\": \"/run\"} \
-  ] \
+  \"remoteUser\": \"vscode\" \
 }"
