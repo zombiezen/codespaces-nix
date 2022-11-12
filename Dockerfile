@@ -65,6 +65,6 @@ LABEL devcontainer.metadata="{ \
   \"remoteUser\": \"vscode\", \
   \"mounts\": [ \
     {\"type\": \"tmpfs\", \"target\": \"/tmp\"}, \
-    {\"type\": \"tmpfs\", \"target\": \"/run\"}, \
+    {\"type\": \"tmpfs\", \"target\": \"/run\"} \
   ] \
 }"
