@@ -24,6 +24,8 @@ jobs:
         with:
           tags: "${{ env.IMAGE_NAME }}:built"
           outputs: type=docker,dest=/tmp/codespaces-nix.tar
+          build-args: |
+            REVISION=${{ github.sha }}
       - name: Upload image
         uses: actions/upload-artifact@v3
         with:
