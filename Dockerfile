@@ -11,7 +11,6 @@ FROM $DEBIAN
 # curl and xz-utils are needed for Nix installation.
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    acl \
     ca-certificates \
     curl \
     dirmngr \
@@ -28,7 +27,6 @@ RUN apt-get update && \
     xz-utils \
     zsh \
   && rm -rf /var/lib/apt/lists/*
-RUN setfacl -k /tmp
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && locale-gen
 
 # Add non-root user.
