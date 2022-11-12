@@ -9,7 +9,7 @@ RUN apt-get update && \
     xz-utils \
   && rm -rf /var/lib/apt/lists/*
 RUN setfacl -k /tmp
-RUN su - vscode -c 'sh <(curl -L https://nixos.org/nix/install) --no-daemon'
+RUN su - vscode -c 'sh <(curl -fsSL https://releases.nixos.org/nix/nix-2.11.1/install) --no-daemon'
 
 COPY nix.sh /tmp/nix.sh
 RUN install --mode 644 /tmp/nix.sh /etc/profile.d/nix.sh && rm /tmp/nix.sh
