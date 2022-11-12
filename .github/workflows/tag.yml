@@ -6,7 +6,7 @@ on:
         description: Source tag
         required: true
       dst:
-        description: Destination tag
+        description: Destination tags (space-separated)
         required: true
 permissions:
   packages: write
@@ -31,4 +31,7 @@ jobs:
           SRC: "ghcr.io/${{ github.repository_owner }}/codespaces-nix:${{ inputs.src }}"
           DST: "${{ inputs.dst }}"
         run: |
-          ./crane tag "$SRC" "$DST"
+          IFS=' ' read -r -a dst_tags <<< "$DST"
+          for t in "${dst_tags[@]}"; do
+            ./crane tag "$SRC" "$t"
+          done
