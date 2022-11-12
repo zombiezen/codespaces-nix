@@ -1,0 +1,34 @@
+name: Tag Image
+on:
+  workflow_dispatch:
+    inputs:
+      src:
+        description: Source tag
+        required: true
+      dst:
+        description: Destination tag
+        required: true
+permissions:
+  packages: write
+jobs:
+  tag:
+    name: Tag
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install crane
+        env:
+          VERSION: "0.12.1"
+        run: |
+          curl -fsSL "https://github.com/google/go-containerregistry/releases/download/v${VERSION}/go-containerregistry_Linux_x86_64.tar.gz" | tar zxf - crane
+      - name: Log into GitHub Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Tag
+        env:
+          SRC: "ghcr.io/${{ github.repository_owner }}/codespaces-nix:${{ inputs.src }}"
+          DST: "${{ inputs.dst }}"
+        run: |
+          ./crane tag "$SRC" "$DST"
