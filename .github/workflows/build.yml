@@ -31,11 +31,13 @@ jobs:
             REVISION=${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
-      - name: Upload image
+      - name: Store image as artifact
+        if: github.event_name == 'release'
         uses: actions/upload-artifact@v3
         with:
           name: image
           path: /tmp/codespaces-nix.tar
+          retention-days: 1
     permissions:
       contents: read
   push:
