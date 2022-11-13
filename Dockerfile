@@ -7,7 +7,7 @@ FROM $DEBIAN
 # ca-certificates, libc6, libstdc++6, python-minimal, and tar.
 # https://code.visualstudio.com/docs/remote/linux#_remote-host-container-wsl-linux-prerequisites
 #
-# curl and xz-utils are needed for Nix installation.
+# curl, tar, and xz-utils are needed for Nix installation.
 RUN apt-get update && \
   DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     ca-certificates \
@@ -27,6 +27,7 @@ RUN apt-get update && \
     zsh \
   && rm -rf /var/lib/apt/lists/*
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && locale-gen
+ENV LANG=en_US.UTF-8
 
 # Add non-root user.
 RUN groupadd --gid 1000 vscode && \
@@ -40,16 +41,17 @@ RUN groupadd --gid 1000 vscode && \
   chmod 0440 /etc/sudoers.d/vscode
 
 # Install Nix and set up userspace.
-RUN su - vscode -c 'sh <(curl -fsSL https://releases.nixos.org/nix/nix-2.11.1/install) --no-daemon'
-COPY userspace.nix /tmp/userspace.nix
-RUN su - vscode -c 'nix-env --file /tmp/userspace.nix --install --attr defaultPackages' \
-  && rm /tmp/userspace.nix
+COPY userspace.nix install-userspace.sh /tmp/
+RUN bash /tmp/install-userspace.sh vscode /opt/sw \
+  && rm /tmp/userspace.nix /tmp/install-userspace.sh
+ENV PATH="/opt/sw/bin:$PATH"
 
 # Customize environment variables.
 COPY profile.d /tmp/profile.d
 RUN install --mode 644 /tmp/profile.d/* /etc/profile.d/ && \
   rm -rf /tmp/profile.d && \
   echo 'source /etc/profile.d/00-user.sh' >> /etc/zsh/zshenv && \
+  echo 'source /etc/profile.d/01-sw-path.sh' >> /etc/zsh/zshenv && \
   echo 'source /etc/profile.d/nix.sh' >> /etc/zsh/zprofile
 
 # Set up tmpfs volumes.

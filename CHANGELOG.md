@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning][].
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
 [Unreleased]: https://github.com/zombiezen/codespaces-nix/compare/v0.1.1...HEAD
 
+## [Unreleased][]
+
+### Added
+
+- Provide system-wide Git and Nix in `PATH` at `/opt/sw/bin`.
+
+### Fixed
+
+- Provide Git that is accessible for Codespaces
+  ([#3](https://github.com/zombiezen/codespaces-nix/issues/3)).
+
 ## [0.1.1][] - 2022-11-12
 
 Version 0.1.1 fixes problems with the image's metadata.
