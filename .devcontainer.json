@@ -1,6 +1,12 @@
 // For format details, see https://aka.ms/devcontainer.json.
 {
-	"image": "ghcr.io/zombiezen/codespaces-nix:0.1.0",
+	"build": {
+		"dockerfile": "Dockerfile",
+		"args": {
+			"REVISION": "dev"
+		}
+	},
+	"remoteUser": "vscode",
 	"features": {
 		"ghcr.io/devcontainers/features/docker-from-docker:1": {
 			"version": "latest"
