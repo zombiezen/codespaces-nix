@@ -16,7 +16,7 @@ if [[ "$uid" -eq 0 ]]; then
 else
   username="$(id -un)"
   run_as_root() {
-    sudo -- "$@"
+    sudo --non-interactive -- "$@"
   }
   run_as_user() {
     USER="$username" LOGNAME="$username" "$@"
