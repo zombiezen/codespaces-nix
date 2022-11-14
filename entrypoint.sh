@@ -23,11 +23,14 @@ else
   }
 fi
 
+run_as_root /nix/var/nix/profiles/default/bin/nix-daemon >& /tmp/nix-daemon.log &
+
 run_as_root mkdir -p "/run/user/$uid"
 run_as_root chown "$username:$username" "/run/user/$uid"
+
 lorri="/nix/var/nix/profiles/per-user/$username/profile/bin/lorri"
 if [[ -x "$lorri" ]]; then
-  XDG_RUNTIME_DIR="/run/user/$uid" run_as_user "$lorri" daemon &
+  XDG_RUNTIME_DIR="/run/user/$uid" run_as_user "$lorri" daemon >& "/run/user/$uid/lorri.log" &
 fi
 
 exec "$@"

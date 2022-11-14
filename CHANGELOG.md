@@ -12,12 +12,17 @@ and this project adheres to [Semantic Versioning][].
 ### Added
 
 - Provide system-wide Git and Nix in `PATH` at `/opt/sw/bin`.
+  This is managed as the default Nix profile and linked in `/root/.nix-profile`.
 - Automatically run [Lorri](https://github.com/nix-community/lorri) on startup
   ([#2](https://github.com/zombiezen/codespaces-nix/issues/2)).
 
+### Changed
+
+- Nix is now a multi-user installation.
+
 ### Fixed
 
-- Provide Git that is accessible for Codespaces
+- Provide Git that is accessible for Codespaces dotfiles clone
   ([#3](https://github.com/zombiezen/codespaces-nix/issues/3)).
 
 ## [0.1.1][] - 2022-11-12
