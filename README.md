@@ -23,6 +23,10 @@ Add the following `.devcontainer.json` file to your project:
 }
 ```
 
+Then follow the [Codespaces instructions][] to start up a Codespace.
+
+[Codespaces instructions]: https://docs.github.com/en/codespaces/developing-in-codespaces/creating-a-codespace-for-a-repository
+
 ## License
 
 [Unlicense](LICENSE)
