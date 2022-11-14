@@ -16,7 +16,7 @@ run_as_root() {
 
 run_as_user() {
   if [[ "$(id -un)" = "$username" ]]; then
-    "$@"
+    USER="$username" LOGNAME="$username" "$@"
   else
     runuser -u "$username" -- "$@"
   fi

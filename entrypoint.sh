@@ -19,7 +19,7 @@ else
     sudo -- "$@"
   }
   run_as_user() {
-    "$@"
+    USER="$username" LOGNAME="$username" "$@"
   }
 fi
 
