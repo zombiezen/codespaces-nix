@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning][].
   This is managed as the default Nix profile and linked in `/root/.nix-profile`.
 - Automatically run [Lorri](https://github.com/nix-community/lorri) on startup
   ([#2](https://github.com/zombiezen/codespaces-nix/issues/2)).
+- Install [procps](https://gitlab.com/procps-ng/procps) and
+  [psmisc](https://gitlab.com/psmisc/psmisc) in the user profile.
 
 ### Changed
 

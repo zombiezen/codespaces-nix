@@ -20,6 +20,8 @@ in
     pkgs.direnv
     pkgs.lorri
     pkgs.man
+    pkgs.procps
+    pkgs.psmisc
     pkgs.unzip
     pkgs.zip
   ];
