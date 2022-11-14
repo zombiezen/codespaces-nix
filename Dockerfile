@@ -54,6 +54,13 @@ RUN install --mode 644 /tmp/profile.d/* /etc/profile.d/ && \
   echo 'source /etc/profile.d/01-sw-path.sh' >> /etc/zsh/zshenv && \
   echo 'source /etc/profile.d/nix.sh' >> /etc/zsh/zprofile
 
+# Set up entrypoint.
+COPY entrypoint.sh /tmp/entrypoint.sh
+RUN install --mode 755 /tmp/entrypoint.sh /usr/local/bin/codespaces-nix-entrypoint && \
+  rm /tmp/entrypoint.sh
+ENTRYPOINT ["/usr/local/bin/codespaces-nix-entrypoint"]
+CMD ["sleep", "infinity"]
+
 # Set up tmpfs volumes.
 VOLUME ["/tmp", "/run"]
 
@@ -64,5 +71,6 @@ LABEL org.opencontainers.image.documentation="https://github.com/zombiezen/codes
 LABEL org.opencontainers.image.base.name="$DEBIAN"
 LABEL org.opencontainers.image.revision="$REVISION"
 LABEL devcontainer.metadata="{ \
-  \"remoteUser\": \"vscode\" \
+  \"remoteUser\": \"vscode\", \
+  \"overrideCommand\": false \
 }"

@@ -18,6 +18,7 @@ in
   userPackages = systemPackages ++ [
     pkgs.bzip2
     pkgs.direnv
+    pkgs.lorri
     pkgs.man
     pkgs.unzip
     pkgs.zip

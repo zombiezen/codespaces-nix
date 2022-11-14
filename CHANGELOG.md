@@ -12,6 +12,8 @@ and this project adheres to [Semantic Versioning][].
 ### Added
 
 - Provide system-wide Git and Nix in `PATH` at `/opt/sw/bin`.
+- Automatically run [Lorri](https://github.com/nix-community/lorri) on startup
+  ([#2](https://github.com/zombiezen/codespaces-nix/issues/2)).
 
 ### Fixed
 

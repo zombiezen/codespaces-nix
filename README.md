@@ -5,8 +5,12 @@ suitable for use in [GitHub Codespaces][].
 It has a Debian base to support the VSCode server process
 and handle standard Dev Container features.
 
+This image runs the [Lorri][] daemon and installs [direnv][].
+
 [Dev Container]: https://containers.dev/
+[direnv]: https://direnv.net/
 [GitHub Codespaces]: https://github.com/features/codespaces
+[Lorri]: https://github.com/nix-community/lorri
 [Nix package manager]: https://nixos.org/
 
 ## Usage
