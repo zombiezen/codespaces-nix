@@ -26,6 +26,7 @@ and this project adheres to [Semantic Versioning][].
 
 - Provide Git that is accessible for Codespaces dotfiles clone
   ([#3](https://github.com/zombiezen/codespaces-nix/issues/3)).
+- Set `LOCALE_ARCHIVE` environment variable.
 
 ## [0.1.1][] - 2022-11-12
 

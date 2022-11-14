@@ -28,6 +28,7 @@ RUN apt-get update && \
   && rm -rf /var/lib/apt/lists/*
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen && locale-gen
 ENV LANG=en_US.UTF-8
+ENV LOCALE_ARCHIVE=/usr/lib/locale/locale-archive
 
 # Add non-root user.
 RUN groupadd --gid 1000 vscode && \
