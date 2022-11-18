@@ -5,6 +5,7 @@
 
 let
   systemPackages = [
+    pkgs.acl
     pkgs.git
     pkgs.nix
   ];

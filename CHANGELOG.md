@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning][].
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
 [Unreleased]: https://github.com/zombiezen/codespaces-nix/compare/v0.2.0...HEAD
 
+## [Unreleased][]
+
+### Changed
+
+- Set `NIX_REMOTE=daemon` explicitly.
+
+### Fixed
+
+- Fix permissions issues in building files
+  ([#5](https://github.com/zombiezen/codespaces-nix/issues/5)).
+
 ## [0.2.0][] - 2022-11-13
 
 Version 0.2 fixes a number of issues I uncovered
